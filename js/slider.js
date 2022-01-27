@@ -36,11 +36,27 @@ const app = new Vue({
             'images/image1.jpg',
             'images/image2.jpg',
             'images/image3.jpg',
-            'images/image3.jpg',
+            'images/image4.jpg',
         ]
     },
     methods: {
-
+        activeImg(index) {
+            return this.currentIndex === index;
+        },
+        nextPic() {
+            // if (this.currentIndex === (this.images.lenght - 1)) {
+            //     this.currentIndex -= this.images.lenght;
+            // }
+            this.currentIndex++;
+        },
+        prevPic() {
+            if (this.currentIndex === 0) {
+                this.currentIndex += this.images.length;
+            } this.currentIndex--;
+        },
+        dotImg(index) {
+            this.currentIndex = index;
+        },
 
     },
 });

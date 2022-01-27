@@ -20,21 +20,24 @@
         <div class="container vh-100">
             <div class="row">
                 <div class="col-3 d-flex align-items-center justify-content-center">
-                    <i class="fas fa-angle-left fa-4x"></i>
+                    <i class="fas fa-angle-left fa-4x" @click="prevPic" :class="prevPic"></i>
                 </div>
                 <div class="col-6">
                     <div class="slider d-flex align-items-center">
-                        <img class="img-fluid" src="images/image1.jpg" alt="" />
-                        <div class="slider-dots">
-                            <div class="dot mx-2 active"></div>
-                            <div class="dot mx-2"></div>
-                            <div class="dot mx-2"></div>
-                            <div class="dot mx-2"></div>
+
+                        <img class="img-fluid" :src="image" v-for="(image, index) in images" v-if="activeImg(index)"
+                            :alt="`image${index + 1}`" />
+
+                        <div class="slider-dots :">
+                            <div class="dot mx-2" v-for="(image, index) in images" :class="{active : activeImg(index)}"
+                                @click="dotImg(index)">
+                            </div>
+
                         </div>
                     </div>
                 </div>
                 <div class="col-3 d-flex align-items-center justify-content-center">
-                    <i class="fas fa-angle-right fa-4x"></i>
+                    <i class="fas fa-angle-right fa-4x" @click="nextPic" :class="nextPic"></i>
                 </div>
             </div>
         </div>
